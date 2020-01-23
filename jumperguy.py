@@ -25,7 +25,7 @@ def main():
     #Setting the speed of fps limit, and speed of the background, bigger numbers mean faster speed.
 
     fps = 30 
-    speed = 5
+    speed = 10
 
     # Game initialization and starting of main loop
 
