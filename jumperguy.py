@@ -5,11 +5,13 @@ def main():
     # Loading the background image and setting variables for x coordinates
 
     background_one = pygame.image.load('background.png')
-    background_two = pygame.image.load('background.png')
+    background_two = pygame.image.load('background2.png')
+    # background_three = pygame.image.load('background3.png')
 
     background_one_x = 0
     background_two_x = background_one.get_width()
-    
+    # background_three_x = background_two.get_width()
+
     # Setting window display size
 
     width = background_one.get_width()
@@ -45,14 +47,18 @@ def main():
         
         screen.blit(background_one, [background_one_x, 0])
         screen.blit(background_two, [background_two_x, 0])
+        # screen.blit(background_three, [background_three_x, 0])
         
         background_one_x -= speed
         background_two_x -= speed
+        # background_three_x -= speed
 
         if background_one_x <= -1 * background_one.get_width():
             background_one_x = background_two_x + background_two.get_width()
         if background_two_x <= -1 * background_two.get_width():
             background_two_x = background_one_x + background_one.get_width()
+        # if background_three_x <= -1 * background_three.get_width():
+        #     background_three_x = background_two_x + background_two.get_width()
 
         pygame.display.update()
         
