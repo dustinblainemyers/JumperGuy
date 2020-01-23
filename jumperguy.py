@@ -1,4 +1,6 @@
 import pygame
+import sys
+pygame.font.init()
 
 def main():
 
@@ -24,10 +26,16 @@ def main():
     pygame.display.set_caption('Jumper guy')
     clock = pygame.time.Clock()
 
-    #Setting the speed of fps limit, and speed of the background, bigger numbers mean faster speed.
-
-    fps = 30 
+    # Setting the speed of fps limit, and speed of the background, bigger numbers mean faster speed.
+    
+    fps = 60 
     speed = 10
+    
+    # Setting score variable and font
+
+    myfont = pygame.font.Font('8bit16.ttf', 28)
+    score = 0
+    real_score = 0
 
     # Game initialization and starting of main loop
 
@@ -42,6 +50,8 @@ def main():
 
 
         # Game logic
+
+        
 
         # Drawing the moving background
         
@@ -60,10 +70,19 @@ def main():
         # if background_three_x <= -1 * background_three.get_width():
         #     background_three_x = background_two_x + background_two.get_width()
 
+        # Adding to the score and displaying it.
+        real_score += 1
+        score_text = myfont.render('Score = {}'.format(score), 1, (255,255,255))
+        screen.blit(score_text, [10,320])
+
+        if real_score % 10 == 0:
+            score +=1
+            
         pygame.display.update()
         
         # Game clock
         clock.tick(fps)
+         
 
     pygame.quit()
 
