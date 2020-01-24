@@ -1,18 +1,21 @@
-from exitscreen import exitfun
-from titlescreen import titlescreen
-import pygame
+import os
 import sys
+import pygame
+from titlescreen import titlescreen
+from exitscreen import exitfun
 pygame.font.init()
 
 GREEN = (0, 255, 0)
+
+
 # Player class object
 
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((50, 50))
-        self.image.fill(GREEN)
+        self.image = pygame.image.load('1.png')
+        # self.image.fill(GREEN)
         self.rect = self.image.get_rect()
         self.movex = 0
         self.movey = 0
@@ -73,17 +76,17 @@ def main():
         for event in pygame.event.get():
 
             # Event handling
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE or event.key == ord('w'):
+                    player.control(steps, 0)
+                if event.key == pygame.K_RIGHT or event.key == ord('d'):
+                    player.control(steps, 0)
 
             # This needs to be changed once characters and dying are implemented.
             if event.type == pygame.QUIT:
                 stop_game = True
 
         # Game logic
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE or event.key == ord('w'):
-                    player.control(steps, 0)
-                if event.key == pygame.K_RIGHT or event.key == ord('d'):
-                    player.control(steps, 0)
 
         # Drawing the moving background
 
@@ -95,7 +98,7 @@ def main():
         # player definitiions
         player = Player()
         player.rect.x = 130
-        player.rect.y = 260
+        player.rect.y = 160
         player_list = pygame.sprite.Group()
         player_list.add(player)
         steps = 10
