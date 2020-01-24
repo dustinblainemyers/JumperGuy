@@ -19,7 +19,10 @@ Pygame
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Bailey Day** - *Initial work* - [Github](https://github.com/BaileyDay)
+* **Patrick Furtak** - *Initial work* - [Github](https://github.com/PFurtak)
+* **Dustin Myers** - *Initial work* - [Github](https://github.com/dustinblainemyers)
+
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
