@@ -1,20 +1,23 @@
-import pygame
-import sys
-pygame.font.init()
-from titlescreen import titlescreen
-from exitscreen import exitscreen
 
-# Calling the title screen
+# Importing score for display.
 
-titlescreen()
 
-def main():
+    
 
-    # Loading the background image and setting variables for x coordinates
+def exitscreen():
+    import pygame
+
+     # Loading the background image and setting variables for x coordinates
 
     background_one = pygame.image.load('background.png')
     background_two = pygame.image.load('background2.png')
 
+    # loading the death logo and death instructions.
+
+    death = pygame.image.load('death.png')
+    tryagain = pygame.image.load('tryagain.png')
+
+    # Setting background x-coordinate variables.
     background_one_x = 0
     background_two_x = background_one.get_width()
 
@@ -24,25 +27,20 @@ def main():
     height = background_one.get_height()
     screen = pygame.display.set_mode((width, height))
 
-    # Initiliazing pygame, setting game caption, and initializing clock.
-    
+    # initializing pygame, the clock, and setting game caption.
     pygame.init()
-    pygame.display.set_caption('Jumper guy')
+    pygame.display.set_caption('Jumper Guy')
     clock = pygame.time.Clock()
 
-    # Setting the speed of fps limit, and speed of the background, bigger numbers mean faster speed.
-    
-    fps = 60 
+    # Setting Speed 
     speed = 10
-    
-    # Setting score variable and font
+
+    # Setting font
 
     myfont = pygame.font.Font('8bit16.ttf', 28)
-    
-    real_score = 0
-    score = 0
+    # score_text = myfont.render('final score =  {}'.format(score), 1, (255,255,255))
 
-    # Game initialization and starting of main loop
+    # Game initialization
 
     stop_game = False
     while not stop_game:
@@ -50,16 +48,12 @@ def main():
 
             # Event handling
 
-            if event.type == pygame.QUIT:
+            if event.type == pygame.KEYDOWN:
                 stop_game = True
+            if event.type == pygame.QUIT:
+                exit()
 
-
-        # Game logic
-
-        
-
-        # Drawing the moving background
-        
+        # Draw background
         screen.blit(background_one, [background_one_x, 0])
         screen.blit(background_two, [background_two_x, 0])
         
@@ -71,23 +65,18 @@ def main():
         if background_two_x <= -1 * background_two.get_width():
             background_two_x = background_one_x + background_one.get_width() + 1
 
-        # Adding to the score and displaying it.
-        real_score += 1
-        score_text = myfont.render('Score = {}'.format(score), 1, (255,255,255))
-        screen.blit(score_text, [10,320])
+        # Adding the exit screen logo, score, and text. 
 
-        if real_score % 10 == 0:
-            score +=1
-            
+        screen.blit(death, [0, 0])
+        screen.blit(tryagain, [0, 90])
+        # screen.blit(score_text, [0,0])
+
+        # Game display
+
         pygame.display.update()
-        
-        # Game clock
-        clock.tick(fps)
-         
+        clock.tick(60)
 
     pygame.quit()
-
-    exitscreen()
 
 if __name__ == '__main__':
     main()
