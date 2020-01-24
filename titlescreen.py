@@ -21,6 +21,7 @@ def titlescreen():
     width = background_one.get_width()
     height = background_one.get_height()
     screen = pygame.display.set_mode((width, height))
+   
 
     # Initializing pygame, the clock, and setting the game caption.
 

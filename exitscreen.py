@@ -1,10 +1,4 @@
-
-# Importing score for display.
-
-
-    
-
-def exitscreen():
+def exitfun():
     import pygame
 
      # Loading the background image and setting variables for x coordinates
@@ -15,9 +9,9 @@ def exitscreen():
     # loading the death logo and death instructions.
 
     death = pygame.image.load('death.png')
-    tryagain = pygame.image.load('tryagain.png')
-
+    
     # Setting background x-coordinate variables.
+
     background_one_x = 0
     background_two_x = background_one.get_width()
 
@@ -52,6 +46,8 @@ def exitscreen():
                 stop_game = True
             if event.type == pygame.QUIT:
                 exit()
+          
+
 
         # Draw background
         screen.blit(background_one, [background_one_x, 0])
@@ -67,10 +63,9 @@ def exitscreen():
 
         # Adding the exit screen logo, score, and text. 
 
-        screen.blit(death, [0, 0])
-        screen.blit(tryagain, [0, 90])
-        # screen.blit(score_text, [0,0])
-
+        screen.blit(death, [0, 90])
+        
+        
         # Game display
 
         pygame.display.update()

@@ -2,11 +2,13 @@ import pygame
 import sys
 pygame.font.init()
 from titlescreen import titlescreen
-from exitscreen import exitscreen
+from exitscreen import exitfun
 
-# Calling the title screen
+# Calling the title screen.
 
 titlescreen()
+
+# Main game function
 
 def main():
 
@@ -32,13 +34,12 @@ def main():
 
     # Setting the speed of fps limit, and speed of the background, bigger numbers mean faster speed.
     
-    fps = 60 
+    fps = 60
     speed = 10
     
     # Setting score variable and font
 
     myfont = pygame.font.Font('8bit16.ttf', 28)
-    
     real_score = 0
     score = 0
 
@@ -50,6 +51,7 @@ def main():
 
             # Event handling
 
+            # This needs to be changed once characters and dying are implemented.
             if event.type == pygame.QUIT:
                 stop_game = True
 
@@ -83,11 +85,13 @@ def main():
         
         # Game clock
         clock.tick(fps)
-         
 
     pygame.quit()
 
-    exitscreen()
+    # Calling the Exit Function.
+    exitfun()
+    
 
+   
 if __name__ == '__main__':
     main()
