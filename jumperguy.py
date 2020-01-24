@@ -59,6 +59,18 @@ def main():
     real_score = 0
     score = 0
 
+    class Player(pygame.sprite.Sprite):
+        def __init__(self):
+            pygame.sprite.Sprite.__init__(self)
+            self.image = pygame.Surface((50, 40))
+            self.image.fill(GREEN)
+            self.rect = self.image.get_rect()
+            self.rect.centerx = WIDTH / 2
+            self.rect.bottom = HEIGHT - 10
+            self.speedx = 0
+        def update(self):
+            self.rect.x += self.speedx
+
     class Mob(pygame.sprite.Sprite):
        def __init__(self, x_location):
         pygame.sprite.Sprite.__init__(self)
@@ -91,7 +103,10 @@ def main():
            lastloc = obstacle.rect.x
            print(obstacle.rect.x)
            
+
     all_sprites = pygame.sprite.Group()
+    player = Player()
+    all_sprites.add(player)
     mobs = pygame.sprite.Group()
 
     for i in range(1):
