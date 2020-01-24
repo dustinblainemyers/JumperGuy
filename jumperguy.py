@@ -12,10 +12,14 @@ lastloc = 1000
 titlescreen()
 
 
+
+
 def main():
 
     # Loading the background image and setting variables for x coordinates
-
+    vel = 5
+    isJump = False
+    jumpCount = 10
     background_one = pygame.image.load('background.png')
     background_two = pygame.image.load('background2.png')
 
@@ -128,6 +132,17 @@ def main():
 
 
         # Game logic
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_SPACE]:
+            isJump = True
+        
+        if jumpCount >= -10:
+            player.rect.bottom -= (jumpCount * abs(jumpCount)) * 0.5
+            jumpCount -= 1
+        else: 
+            jumpCount = 10
+            isJump = False
 
         #Logic to randomly place obstacles
 
