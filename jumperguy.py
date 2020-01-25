@@ -17,9 +17,8 @@ titlescreen()
 def main():
 
     # Loading the background image and setting variables for x coordinates
-    vel = 5
-    isJump = False
-    jumpCount = 10
+    
+    
     background_one = pygame.image.load('background.png')
     background_two = pygame.image.load('background2.png')
 
@@ -62,8 +61,14 @@ def main():
     
     real_score = 0
     score = 0
+    
+    global is_jumping 
+    is_jumping = False
+    global jump_count
+    jump_count = 10
 
     class Player(pygame.sprite.Sprite):
+        
         def __init__(self):
             pygame.sprite.Sprite.__init__(self)
             self.image = pygame.Surface((50, 40))
@@ -74,6 +79,20 @@ def main():
             self.speedx = 0
         def update(self):
             self.rect.x += self.speedx
+            global is_jumping
+            global jump_count
+            if is_jumping: 
+                while jump_count > 5:
+                    self.rect.bottom += 1
+                    jump_count -= 1
+                while jump_count > 0:
+                    self.rect.bottom -= 1
+                    jump_count -= 1
+                
+                
+                jump_count = 10
+            is_jumping = False
+
 
     class Mob(pygame.sprite.Sprite):
        def __init__(self, x_location):
@@ -123,6 +142,7 @@ def main():
 
     stop_game = False
     while not stop_game:
+        
         for event in pygame.event.get():
 
             # Event handling
@@ -135,14 +155,12 @@ def main():
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
-            isJump = True
-        
-        if jumpCount >= -10:
-            player.rect.bottom -= (jumpCount * abs(jumpCount)) * 0.5
-            jumpCount -= 1
-        else: 
-            jumpCount = 10
-            isJump = False
+            is_jumping = True
+            pygame.time
+            
+            
+           
+
 
         #Logic to randomly place obstacles
 
