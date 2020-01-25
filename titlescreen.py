@@ -1,11 +1,11 @@
 def titlescreen():
     import pygame
 
-     # Loading the background images 
+    # Loading the background images
 
     background_one = pygame.image.load('background.png')
     background_two = pygame.image.load('background2.png')
-    
+
     # Loading main logo and instructions
 
     logo = pygame.image.load('logo.png')
@@ -21,7 +21,6 @@ def titlescreen():
     width = background_one.get_width()
     height = background_one.get_height()
     screen = pygame.display.set_mode((width, height))
-   
 
     # Initializing pygame, the clock, and setting the game caption.
 
@@ -29,7 +28,7 @@ def titlescreen():
     pygame.display.set_caption('Jumper Guy')
     clock = pygame.time.Clock()
 
-    # Setting Speed 
+    # Setting Speed
     speed = 10
 
     # Game initialization
@@ -48,7 +47,7 @@ def titlescreen():
         # displaying the background on the screen.
         screen.blit(background_one, [background_one_x, 0])
         screen.blit(background_two, [background_two_x, 0])
-        
+
         background_one_x -= speed
         background_two_x -= speed
 
@@ -68,6 +67,7 @@ def titlescreen():
         clock.tick(60)
 
     pygame.quit()
+
 
 if __name__ == '__main__':
     main()
