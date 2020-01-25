@@ -1,7 +1,7 @@
 import os
 import sys
-<<<<<<< HEAD
 import random
+import pygame
 pygame.font.init()
 from titlescreen import titlescreen
 from exitscreen import exitfun
@@ -11,11 +11,9 @@ from exitscreen import exitfun
 lastloc = 1000
 
 titlescreen()
-=======
-import pygame
-from titlescreen import titlescreen
-from exitscreen import exitfun
-pygame.font.init()
+
+
+
 # Player class object
 
 
@@ -46,8 +44,8 @@ class Player(pygame.sprite.Sprite):
         # self.rect.x = self.rect.x + self.movex
         self.rect.y = self.rect.y + self.movey
         # Jump logic
-        if self.rect.y == 160 and self.jumping == True:
-            self.rect.y -= 100
+        if self.jumping == True:
+            self.rect.y -= 150
         if self.rect.y < 160 and self.jumping == False:
             self.rect.y += 4
             # Running animation cycle
@@ -69,7 +67,6 @@ player_list.add(player)
 # animation cycles
 ani = 7
 
->>>>>>> 6ab4bf9cee1f2356628bbd1077e0344bd13987c9
 # Main game function
 
 
@@ -80,7 +77,6 @@ def main():
     background_one_x = 0
     background_two_x = background_one.get_width()
     # Setting window display size
-<<<<<<< HEAD
 
     WIDTH = 1000
     HEIGHT = 350
@@ -96,16 +92,10 @@ def main():
     YELLOW = (255, 255, 0)
 
     
-=======
-    width = background_one.get_width()
-    height = background_one.get_height()
-    screen = pygame.display.set_mode((width, height))
->>>>>>> 6ab4bf9cee1f2356628bbd1077e0344bd13987c9
     # Initiliazing pygame, setting game caption, and initializing clock.
     pygame.init()
     pygame.display.set_caption('Jumper guy')
     clock = pygame.time.Clock()
-<<<<<<< HEAD
 
     #frame tracker to randomly put obstacles on screen
     frame_tracker = 0
@@ -113,17 +103,12 @@ def main():
     # Setting the speed of FPS limit, and speed of the background, bigger numbers mean faster speed.
     
     FPS = 60
-=======
-    # Setting the speed of fps limit, and speed of the background, bigger numbers mean faster speed.
-    fps = 60
->>>>>>> 6ab4bf9cee1f2356628bbd1077e0344bd13987c9
     speed = 10
     # Setting score variable and font
     myfont = pygame.font.Font('8bit16.ttf', 28)
     
     real_score = 0
     score = 0
-<<<<<<< HEAD
 
     class Mob(pygame.sprite.Sprite):
        def __init__(self, x_location):
@@ -166,8 +151,6 @@ def main():
         mobs.add(m)
         
 
-=======
->>>>>>> 6ab4bf9cee1f2356628bbd1077e0344bd13987c9
     # Game initialization and starting of main loop
     stop_game = False
     while not stop_game:
@@ -189,7 +172,6 @@ def main():
             if event.type == pygame.QUIT:
                 stop_game = True
         # Game logic
-<<<<<<< HEAD
 
         #Logic to randomly place obstacles
 
@@ -199,8 +181,6 @@ def main():
                 all_sprites.add(m)
                 mobs.add(m)
 
-=======
->>>>>>> 6ab4bf9cee1f2356628bbd1077e0344bd13987c9
         # Drawing the moving background
         screen.blit(background_one, [background_one_x, 0])
         screen.blit(background_two, [background_two_x, 0])
@@ -217,13 +197,14 @@ def main():
             'Score = {}'.format(score), 1, (255, 255, 255))
         screen.blit(score_text, [10, 320])
         if real_score % 10 == 0:
-<<<<<<< HEAD
             score +=1
 
         all_sprites.update() 
+        player_list.draw(screen)
         all_sprites.draw(screen)
         pygame.display.flip()   
         pygame.display.update()
+        player.update()
         frame_tracker += 1
         
         # Game clock
@@ -231,15 +212,6 @@ def main():
          
     
 
-=======
-            score += 1
-        # draw sprite
-        player_list.draw(screen)
-        pygame.display.update()
-        player.update()
-        # Game clock
-        clock.tick(fps)
->>>>>>> 6ab4bf9cee1f2356628bbd1077e0344bd13987c9
     pygame.quit()
     # Calling the Exit Function.
     exitfun()
