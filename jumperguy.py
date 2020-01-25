@@ -5,8 +5,6 @@ from titlescreen import titlescreen
 from exitscreen import exitfun
 pygame.font.init()
 
-GREEN = (0, 255, 0)
-
 
 # Player class object
 
@@ -15,7 +13,6 @@ class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('1.png')
-        # self.image.fill(GREEN)
         self.rect = self.image.get_rect()
         self.movex = 0
         self.movey = 0
@@ -34,6 +31,13 @@ class Player(pygame.sprite.Sprite):
 titlescreen()
 
 # Main game function
+player = Player()
+player.rect.x = 130
+player.rect.y = 160
+player_list = pygame.sprite.Group()
+player_list.add(player)
+jump = -10
+jumpoffset = 12
 
 
 def main():
@@ -78,9 +82,11 @@ def main():
             # Event handling
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE or event.key == ord('w'):
-                    player.control(steps, 0)
-                if event.key == pygame.K_RIGHT or event.key == ord('d'):
-                    player.control(steps, 0)
+                    player.control(0, jump)
+
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_SPACE:
+                    player.control(0, jumpoffset)
 
             # This needs to be changed once characters and dying are implemented.
             if event.type == pygame.QUIT:
@@ -96,12 +102,11 @@ def main():
         background_one_x -= speed
         background_two_x -= speed
         # player definitiions
-        player = Player()
-        player.rect.x = 130
-        player.rect.y = 160
-        player_list = pygame.sprite.Group()
-        player_list.add(player)
-        steps = 10
+        # player = Player()
+        # player.rect.x = 130
+        # player.rect.y = 160
+        # player_list = pygame.sprite.Group()
+        # player_list.add(player)
 
         if background_one_x <= -1 * background_one.get_width():
             background_one_x = background_two_x + background_two.get_width()
