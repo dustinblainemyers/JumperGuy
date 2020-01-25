@@ -1,7 +1,7 @@
 def exitfun():
     import pygame
 
-     # Loading the background image and setting variables for x coordinates
+    # Loading the background image and setting variables for x coordinates
 
     background_one = pygame.image.load('background.png')
     background_two = pygame.image.load('background2.png')
@@ -9,7 +9,7 @@ def exitfun():
     # loading the death logo and death instructions.
 
     death = pygame.image.load('death.png')
-    
+
     # Setting background x-coordinate variables.
 
     background_one_x = 0
@@ -26,7 +26,7 @@ def exitfun():
     pygame.display.set_caption('Jumper Guy')
     clock = pygame.time.Clock()
 
-    # Setting Speed 
+    # Setting Speed
     speed = 10
 
     # Setting font
@@ -46,13 +46,11 @@ def exitfun():
                 stop_game = True
             if event.type == pygame.QUIT:
                 exit()
-          
-
 
         # Draw background
         screen.blit(background_one, [background_one_x, 0])
         screen.blit(background_two, [background_two_x, 0])
-        
+
         background_one_x -= speed
         background_two_x -= speed
 
@@ -61,17 +59,17 @@ def exitfun():
         if background_two_x <= -1 * background_two.get_width():
             background_two_x = background_one_x + background_one.get_width() + 1
 
-        # Adding the exit screen logo, score, and text. 
+        # Adding the exit screen logo, score, and text.
 
         screen.blit(death, [0, 90])
-        
-        
+
         # Game display
 
         pygame.display.update()
         clock.tick(60)
 
     pygame.quit()
+
 
 if __name__ == '__main__':
     main()
