@@ -3,14 +3,14 @@ import sys
 import random
 pygame.font.init()
 from titlescreen import titlescreen
-from exitscreen import exitscreen
+from exitscreen import exitfun
 
 # Calling the title screen
 
 lastloc = 1000
 
 titlescreen()
-
+# Main game function
 
 def main():
 
@@ -108,6 +108,7 @@ def main():
 
             # Event handling
 
+            # This needs to be changed once characters and dying are implemented.
             if event.type == pygame.QUIT:
                 stop_game = True
 
@@ -152,11 +153,14 @@ def main():
         # Game clock
         clock.tick(FPS)
          
-    exitscreen()
+    
 
     pygame.quit()
 
+    # Calling the Exit Function.
+    exitfun()
     
 
+   
 if __name__ == '__main__':
     main()
