@@ -79,7 +79,19 @@ def main():
             self.speedx = 0
         def update(self):
             self.rect.x += self.speedx
-           
+            global is_jumping
+            global jump_count
+            if is_jumping: 
+                
+                if jump_count > 5:
+                    self.rect.bottom -= 10
+                    jump_count -= 1
+                elif jump_count > 0:
+                    self.rect.bottom -= 10
+                    jump_count -= 1
+                else:
+                    jump_count = 10
+                is_jumping = False
 
 
     class Mob(pygame.sprite.Sprite):
