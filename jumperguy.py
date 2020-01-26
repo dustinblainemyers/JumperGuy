@@ -33,6 +33,7 @@ class Player(pygame.sprite.Sprite):
         self.rate = 0
         self.jumping = False
         self.running = True
+        self.hitbox = (self.rect.x , self.rect.y, 100, 150)
 
     # left / right functionality if wanted later
     def control(self, x, y):
@@ -43,6 +44,7 @@ class Player(pygame.sprite.Sprite):
     def update(self):
         # self.rect.x = self.rect.x + self.movex
         self.rect.y = self.rect.y + self.movey
+        self.hitbox = (self.rect.x , self.rect.y, 100, 150)
         # Jump logic
         if self.jumping == True and self.rect.y > 120:
             self.rect.y -= 150
@@ -203,6 +205,7 @@ def main():
         all_sprites.update() 
         player_list.draw(screen)
         all_sprites.draw(screen)
+        pygame.draw.rect(screen, RED,player.hitbox,2)
         pygame.display.flip()   
         pygame.display.update()
         player.update()
