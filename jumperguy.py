@@ -123,27 +123,32 @@ def main():
         self.rect.y = 225
         self.speedy = 0
         self.speedx = -10
+        self.hitbox = (self.rect.x , self.rect.y, 100, 100)
         
         # lastloc = 1000
         
        def update(self):
+           
            self.rect.x += self.speedx
+           self.hitbox = (self.rect.x , self.rect.y, 100, 100)
            
            
         
            if self.rect.x < -25  :
             obstacle_generation(self)
+          
        
             
             
         #    if lastloc > 3000:
         #        lastloc = 1000 
     def obstacle_generation(obstacle):
-           global lastloc
+           global lastloc 
            obstacle.rect.x = lastloc + 100
            obstacle.rect.y = 225
            lastloc = obstacle.rect.x
-           print(obstacle.rect.x)
+           
+           
            
     all_sprites = pygame.sprite.Group()
     mobs = pygame.sprite.Group()
@@ -164,13 +169,11 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE or event.key == ord('w'):
                     player.jumping = True
-                    print("Spacebar pressed. Player jumping. Y pos is {} and movey is {}".format(
-                        player.rect.y, player.movey))
+                    
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_SPACE:
                     player.jumping = False
-                    print("Spacebar released.  Y pos is {} and move y is {}".format(
-                        player.rect.y, player.movey))
+                   
             # This needs to be changed once characters and dying are implemented.
             if event.type == pygame.QUIT:
                 stop_game = True
@@ -206,6 +209,12 @@ def main():
         player_list.draw(screen)
         all_sprites.draw(screen)
         pygame.draw.rect(screen, RED,player.hitbox,2)
+        for mob in mobs:
+            count = 1
+            print(count)
+            count += 1
+            what = pygame.draw.rect(screen,RED,mob.hitbox,2)
+            print(what.x)
         pygame.display.flip()   
         pygame.display.update()
         player.update()
