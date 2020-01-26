@@ -51,13 +51,14 @@ class Player(pygame.sprite.Sprite):
         # Jump logic
         if self.jumping == True and self.rect.y > 120:
             self.rect.y -= 250
+            self.rect.x += 30
             # self.rect.x += 100
             
             
         if self.rect.y < 160 and self.jumping == False:
-            self.rect.y += 4
-            # if self.rect.x > 130:
-                # self.rect.x -= 2
+            self.rect.y += 2
+            if self.rect.x > 170:
+                self.rect.x -= 5
         if self.longjumping == True and self.rect.y > 120:
             self.rect.y -= 350
             # self.rect.x += 100
@@ -140,14 +141,14 @@ def main():
         self.rect.y = 225
         self.speedy = 0
         self.speedx = -10
-        self.hitbox = (self.rect.x , self.rect.y, 100, 100)
+        self.hitbox = (self.rect.x + 20 , self.rect.y, 60, 100)
         
         # lastloc = 1000
         
        def update(self):
            
            self.rect.x += self.speedx
-           self.hitbox = (self.rect.x , self.rect.y, 100, 100)
+           self.hitbox = (self.rect.x + 20 , self.rect.y, 60, 100)
            
            
         
@@ -181,7 +182,7 @@ def main():
     hitcount = 0
     while not stop_game:
         for mob in mobs: 
-            if (mob.hitbox[0] - 50) > player.rect.x and (mob.hitbox[0] -50) < (player.rect.x + 50) and (player.rect.y + 150) > (mob.hitbox[1]):
+            if (mob.hitbox[0] - 30) > player.rect.x and (mob.hitbox[0] -30) < (player.rect.x + 50) and (player.rect.y + 150) > (mob.hitbox[1]):
                 hitcount += 1
                 print("\033c")
                 print(mob.hitbox[1])
@@ -246,9 +247,9 @@ def main():
         player_list.draw(screen)
         all_sprites.draw(screen)
         # pygame.draw.rect(screen, RED,player.hitbox,2)
-        for mob in mobs:
+        # for mob in mobs:
            
-            what = pygame.draw.rect(screen,RED,mob.hitbox,2)
+        #     what = pygame.draw.rect(screen,RED,mob.hitbox,2)
            
             
         pygame.display.flip()   
