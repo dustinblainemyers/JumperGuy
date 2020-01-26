@@ -44,7 +44,7 @@ class Player(pygame.sprite.Sprite):
         # self.rect.x = self.rect.x + self.movex
         self.rect.y = self.rect.y + self.movey
         # Jump logic
-        if self.jumping == True:
+        if self.jumping == True and self.rect.y > 120:
             self.rect.y -= 150
         if self.rect.y < 160 and self.jumping == False:
             self.rect.y += 4
