@@ -33,6 +33,7 @@ class Player(pygame.sprite.Sprite):
         self.frame = 0
         self.rate = 0
         self.jumping = False
+        self.longjumping = False
         self.running = True
         self.hitbox = (self.rect.x , self.rect.y, 100, 150)
 
@@ -49,16 +50,24 @@ class Player(pygame.sprite.Sprite):
 
         # Jump logic
         if self.jumping == True and self.rect.y > 120:
-            self.rect.y -= 150
-            self.rect.x += 100
+            self.rect.y -= 250
+            # self.rect.x += 100
             
             
         if self.rect.y < 160 and self.jumping == False:
-            self.rect.y += 40
-            if self.rect.x > 130:
-                self.rect.x -= .5
-            if self.rect.x > 1000:
-                self.rect.x = 0
+            self.rect.y += 4
+            # if self.rect.x > 130:
+                # self.rect.x -= 2
+        if self.longjumping == True and self.rect.y > 120:
+            self.rect.y -= 350
+            # self.rect.x += 100
+            
+            
+        if self.rect.y < 160 and self.longjumping == False:
+            self.rect.y += 15
+            # if self.rect.x > 130:
+                # self.rect.x -= 2
+            
             # Running animation cycle
         if self.running == True:
             self.frame += 1
@@ -189,10 +198,15 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE or event.key == ord('w'):
                     player.jumping = True
+                if event.key == pygame.K_LEFT:
+                    player.longjumping = True
+    
                     
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_SPACE:
                     player.jumping = False
+                if event.key == pygame.K_LEFT:
+                    player.longjumping = False
             
                    
                   
