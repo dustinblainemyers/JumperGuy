@@ -113,11 +113,11 @@ def main():
     class Mob(pygame.sprite.Sprite):
        def __init__(self, x_location):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((30, 30))
-        self.image.fill(RED)
+        self.image = pygame.image.load('can.png')
+        # self.image.fill(RED)
         self.rect = self.image.get_rect()
         self.rect.x = x_location
-        self.rect.y = 250
+        self.rect.y = 225
         self.speedy = 0
         self.speedx = -10
         
@@ -138,7 +138,7 @@ def main():
     def obstacle_generation(obstacle):
            global lastloc
            obstacle.rect.x = lastloc + 100
-           obstacle.rect.y = 250
+           obstacle.rect.y = 225
            lastloc = obstacle.rect.x
            print(obstacle.rect.x)
            
