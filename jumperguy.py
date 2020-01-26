@@ -46,6 +46,7 @@ class Player(pygame.sprite.Sprite):
         # Jump logic
         if self.jumping == True and self.rect.y > 120:
             self.rect.y -= 150
+            
         if self.rect.y < 160 and self.jumping == False:
             self.rect.y += 8
             # Running animation cycle
@@ -214,7 +215,7 @@ def main():
 
     pygame.quit()
     # Calling the Exit Function.
-    exitfun()
+    # exitfun()
 
 
 if __name__ == '__main__':
