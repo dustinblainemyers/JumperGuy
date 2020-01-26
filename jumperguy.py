@@ -47,7 +47,7 @@ class Player(pygame.sprite.Sprite):
         if self.jumping == True and self.rect.y > 120:
             self.rect.y -= 150
         if self.rect.y < 160 and self.jumping == False:
-            self.rect.y += 4
+            self.rect.y += 8
             # Running animation cycle
         if self.running == True:
             self.frame += 1
