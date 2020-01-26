@@ -1,6 +1,5 @@
-def exitfun():
+def tryagain():
     import pygame
-    # from tryagain import tryagain
 
     # Loading the background image and setting variables for x coordinates
 
@@ -9,7 +8,7 @@ def exitfun():
 
     # loading the death logo and death instructions.
 
-    death = pygame.image.load('death.png')
+    death = pygame.image.load('tryagain.png')
 
     # Setting background x-coordinate variables.
 
